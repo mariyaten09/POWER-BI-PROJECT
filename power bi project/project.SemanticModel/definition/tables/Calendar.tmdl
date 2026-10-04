@@ -1,0 +1,107 @@
+table Calendar
+	lineageTag: fd13a7fd-0dc9-4254-8d6a-a6defe825b85
+
+	column Date
+		formatString: General Date
+		lineageTag: 947657b5-3b3f-4483-997e-076efaf5d58c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Изменение
+			isDefault
+			relationship: 4d91af43-4ee2-44cd-a7c9-a8a791df4bab
+			defaultHierarchy: LocalDateTable_5bc1e71a-224e-4984-9923-8eee16965226.'Иерархия дат'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: ed5ab02b-5a72-458f-b31b-930a77af9818
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = User
+
+	column MonthNo
+		formatString: 0
+		lineageTag: fabb52ad-bf3d-4f22-aec5-3baed2d19e80
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: b8fda259-8d90-47f6-a111-0994d8bba80a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		lineageTag: 5a8363c0-ccd4-4bb2-b3ec-9b14409ec749
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 65069d02-7a42-4262-98ca-af6f7608ec60
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarter
+		lineageTag: 59073492-bee9-4cd3-8dc6-e022c7695688
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearQuarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayNo
+		formatString: 0
+		lineageTag: cda20e4a-3ebf-4643-9a32-a662330f4a1b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekdayNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		lineageTag: 3ad3ab6e-bb3a-41be-bdb1-165f67cce249
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Weekday]
+		sortByColumn: WeekdayNo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				CALENDAR(
+				DATE(YEAR(MIN(bikeshare_trips[start_date])), 1, 1),
+				DATE(YEAR(MAX(bikeshare_trips[start_date])), 12, 31)
+				),
+				"Year", YEAR([Date]),
+				"MonthNo", MONTH([Date]),
+				"Month", FORMAT([Date], "MMMM"),
+				"YearMonth", FORMAT([Date], "YYYY-MM"),
+				"Quarter", "Q" & FORMAT([Date], "Q"),
+				"YearQuarter", FORMAT([Date], "YYYY") & " Q" & FORMAT([Date], "Q"),
+				"WeekdayNo", WEEKDAY([Date], 2),
+				"Weekday", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = feeabefa1f234d08b80ce5befe7eb262
+

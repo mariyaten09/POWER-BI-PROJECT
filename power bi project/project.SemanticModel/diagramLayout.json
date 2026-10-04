@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 887,
+            "y": 425.8125
+          },
+          "nodeIndex": "bikeshare_regions",
+          "nodeLineageTag": "cdc517bf-8fff-49df-a051-86e188883bfc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 528,
+            "y": 389.8125
+          },
+          "nodeIndex": "bikeshare_station_info",
+          "nodeLineageTag": "c65626b7-ce35-4bca-86b4-d602b13fd3f1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 66,
+            "y": 653.8125
+          },
+          "nodeIndex": "bikeshare_trips",
+          "nodeLineageTag": "bde41038-f918-4f82-b247-2fa1bfcaad0f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 672,
+            "y": 910.3125
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "fd13a7fd-0dc9-4254-8d6a-a6defe825b85",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Все таблицы",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Все таблицы",
+  "defaultDiagram": "Все таблицы"
+}
